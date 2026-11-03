@@ -6,7 +6,7 @@ DISCOUNT_RATES = {
     "regular": 0.0,
     "member": 0.1,
     "vip": 0.2,
-    "staff": 0.3,
+    "staff": STAFF_DISCOUNT_RATE,
 }
 
 
