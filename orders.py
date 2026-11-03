@@ -1,6 +1,9 @@
+import os
 import smtplib
 
-SMTP_PASSWORD = "hunter2"
+SMTP_PASSWORD = os.environ.get("SMTP_PASSWORD", "")
+
+STAFF_DISCOUNT_RATE = 0.3
 
 DISCOUNT_RATES = {
     "regular": 0.0,
@@ -19,7 +22,7 @@ def process_order(customer_type, items, email):
         s = smtplib.SMTP("localhost", 2525)
         s.login("shop@example.com", SMTP_PASSWORD)
         s.sendmail("shop@example.com", email, "Your total is " + str(total))
-    except:
-        pass
+    except Exception as e:
+        print("Email failed: " + str(e))
     print("Receipt: " + str(total))
     return total
